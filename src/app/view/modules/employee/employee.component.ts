@@ -3,7 +3,7 @@ import {Employee} from "../../../entity/employee";
 import {EmployeeService} from "../../../service/employeeservice";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
-import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup,Validators} from "@angular/forms";
 import {UiAssist} from "../../../util/ui/ui.assist";
 import {Gender} from "../../../entity/gender";
 import {Designation} from "../../../entity/designation";
@@ -122,7 +122,11 @@ export class EmployeeComponent {
 
     this.createView();
 
-    this.gs.getAllList().then((gens: Gender[]) => {
+    // this.gs.getAllList().then((gens: Gender[]) => {
+    //   this.genders = gens;
+    // });
+
+    this.gs.getAllList().subscribe((gens: Gender[]) => {
       this.genders = gens;
     });
 
@@ -232,7 +236,7 @@ export class EmployeeComponent {
 
     const cserchdata = this.csearch.getRawValue();
 
-    this.data.filterPredicate = (employee: Employee, filter: string) => {
+    this.data.filterPredicate = (employee: Employee) => {
       return (cserchdata.csnumber == null || employee.number.toLowerCase().includes(cserchdata.csnumber)) &&
         (cserchdata.cscallingname == null || employee.callingname.toLowerCase().includes(cserchdata.cscallingname)) &&
         (cserchdata.csgender == null || employee.gender.name.toLowerCase().includes(cserchdata.csgender)) &&
@@ -592,7 +596,7 @@ export class EmployeeComponent {
 
 
 
-  setUpdated(formcontrol:string) {
+  setUpdated() {
 
     /*
 
@@ -737,10 +741,6 @@ export class EmployeeComponent {
   */
 
   getErrors2() {
-
-    let errors: string = "";
-
-
     /*
 
     if (this.form.errors)

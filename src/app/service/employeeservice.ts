@@ -1,7 +1,6 @@
 import {Employee} from "../entity/employee";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Gender} from "../entity/gender";
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +39,6 @@ export class EmployeeService {
   }
 
   async add(employee: Employee): Promise<[]|undefined>{
-    //console.log("Employee Adding-"+JSON.stringify(employee));
-    //employee.number="47457";
     return this.http.post<[]>('http://localhost:8080/employees', employee).toPromise();
   }
 

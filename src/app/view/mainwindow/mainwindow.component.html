@@ -3,12 +3,12 @@
 
     <span class="toolbar-left">
     <button mat-icon-button (click)="opened=!opened" class="btn-nav"><mat-icon>menu</mat-icon></button>
-      <img src="/assets/earth.jpg" class="img-logo">
+      <img alt="earth" src="/assets/earth.jpg" class="img-logo">
     </span>
 
     <span class="toolbar-right">
       <label class="lbl-user">{{authService.getUsername().toUpperCase()}}</label>
-      <img src="assets/user.png" class="img-user"/>
+      <img alt="user" src="assets/user.png" class="img-user"/>
       <button mat-icon-button (click)="logout()" class="btn-logout"><mat-icon>exit_to_app</mat-icon> </button>
     </span>
 
@@ -31,7 +31,7 @@
             Admin</a></mat-list-item>
         </mat-expansion-panel-header>
 <!--        <mat-list-item *ngFor="let menuItem of menuItems" [disabled]="!menuItem.accessFlag"><a [routerLink]="menuItem.routerLink">{{menuItem.name}}</a></mat-list-item>-->
-        <mat-list-item *ngFor="lex  t menuItem of menuItems" [disabled]="!menuItem.accessFlag">
+        <mat-list-item *ngFor="let menuItem of menuItems" [disabled]="!menuItem.accessFlag">
           <a [routerLink]="menuItem.accessFlag ? menuItem.routerLink : null">{{ menuItem.name }}</a>
         </mat-list-item>
         <mat-list-item><a>Emp. Attendance</a></mat-list-item>
