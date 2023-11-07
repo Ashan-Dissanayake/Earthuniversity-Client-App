@@ -804,7 +804,7 @@ this.form.controls['number'].setValidators([Validators.required,Validators.patte
 
 
      */
-    return errors;
+    //return errors;
   }
 
 
